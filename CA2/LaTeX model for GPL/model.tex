@@ -90,8 +90,7 @@
 
 \begin{flushright}                                                           %模板作者
 \tiny{
-A \LaTeX \ model for General Phys. Lab., SPA, SYSU by \em{\href{https://www.weibo.com/3532532974/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1}{Probfia} Gao.}
-}
+A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.weibo.com/3532532974/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1}{Probfia} Gao.}\\ Adopted from the \href{http://lovephysics.sysu.edu.cn/lib/exe/fetch.php?media=courses:secondlevelzhuhai:report.docx}{original MS Word model} on \href{http://lovephysics.sysu.edu.cn}{Lovephysics}.\\ You can view it on \href{https://github.com/Probfia/SYSU_GPL_C}{Github}.}
 \end{flushright}
 
 \newpage%预习报告
@@ -101,7 +100,7 @@ A \LaTeX \ model for General Phys. Lab., SPA, SYSU by \em{\href{https://www.weib
 \textbf{【实验目的】}
 \begin{enumerate}
  \item[1.]学习弗兰克-赫兹实验仪的使用方法。
- \item[2.]测量氩原子的电流-加速电压关系曲线，计算第一激发电位
+ \item[2.]测量氩原子的电流-加速电压关系曲线，计算第一激发电位。
 \end{enumerate}
 \textbf{【仪器用具】}\par
 %将讲义中的表格截图保存为t1在该文件夹下后删去下一行之前的%符号，合理调整scale参数。
@@ -130,7 +129,7 @@ eU_{G_2 K} = E_n - E_0
  \item[1.]\textbf{何为 F-H 的最佳工作点，实验中如何确定？}\par
 F-H的最佳工作点是使得电流大小适当，实验曲线清晰光滑的灯丝电压$U_F$、第一级电压$U_{G_1 K}$和拒斥电压$U_{AG_2}$的那组值。可以通过前面的提到的判断依据确定最佳工作点的大致值\footnote{王杰, 司嵘嵘. 确定弗兰克-赫兹实验最佳工作参数的方法改进[J]. 大学物理实验, 2018, 第31卷(5):87-91.\label{bestpt}}，根据\cref{bestpt}，$U_F= 3.1\volt$，$U_{G_1 K} = 1.4\volt$和$U_{AG_2} = 6.0\volt$的实验结果较为理想。
  \item[2.]\textbf{为什么其$I(V)$曲线不是断崖式的下落？为什么电流不会下降为零？}\par
-由于灯丝发射的电压具有一定的初动能，且在一定范围内分布，这使得电子的能量有微小的差别，不同的电子在不同电压值发生碰撞，但总体而言曲线峰值依然在理论值附近。由于不是所有电子都能与氦原子发生碰撞，电流不可能骤降为零。
+由于灯丝发射的电压具有一定的初动能，且在一定范围内分布，这使得电子的能量有微小的差别，不同的电子在不同电压值发生碰撞，但总体而言曲线峰值依然在理论值附近。由于不是所有电子都能与氩原子发生碰撞，电流不可能骤降为零。
 \end{enumerate}
 
 \newpage%实验记录
@@ -156,9 +155,105 @@ F-H的最佳工作点是使得电流大小适当，实验曲线清晰光滑的�
 \LARGE\textbf{{\ExpeName}}
 \end{center}
 \textbf{【分析与讨论】}\par
-(Content)
-\newline
+{\em 实验时由于仪器问题，与莫宗霖共用仪器，使用同一套数据。}\par
+1.\textbf{对实验现象的初步讨论}
+\par
+实验时设定灯丝电压为$3\ \volt$，第一段加速电压为$1.4\ \volt$，拒斥电压为$10\ \volt$，每隔$1\ \volt$手动记录一个电流值，得到的实验曲线如\cref{curve3v}
+\cpicn{0.5}{curve3v}{灯丝电压为$3\ \volt$时的电压-电流关系曲线}
+定性上，曲线的形状符合预期。通过各个电流极小值对应的电压值可以给出氩原子的各能级能量与基态能量的差。计算公式为
+\beq \label{caleng}
+ E_n = (1 + V_n/\volt)\ \mathrm{eV}
+\eeq
+其中$1$为第一段加速电压的数值，由于电压测量的精度限制，这里只能对其保留到一位有效数字。于是我们得到能量差
+\begin{align}\label{englev} E_1 &= 27\ \mathrm{eV} \\
+ E_2 &= 39\ \mathrm{eV} \\
+ E_3 &= 51\ \mathrm{eV} \\
+ E_4 &= 62\ \mathrm{eV} \\
+ E_5 &= 74\ \mathrm{eV} 
+\end{align}
+有趣的是，我们发现$E_n$与$n$之间似乎有很良好的线性关系。作出散点图并进行线性拟合，得到的回归直线如\cref{fit3v}，
+\cpicn{0.6}{fit3v}{灯丝电压为$3\ \volt$时，测得能级能量差与序号间的近似线性关系}
+其方程为
+\beq
+E(n) = 11.7n + 15.5 \ \mathrm{eV}
+\eeq
+其中斜率的不确定度为$0.1$，截距的不确定度为$0.4$。根据这一近似的线性关系，我们猜测可能在$\sim 15 \mathrm{\ eV}$附近存在一个被漏测的激发态。查询相关文献\footnote{朱筱玮. 氩原子的第一激发电位[J]. 西北大学学报: 自然科学网络版, 2006，4(6): 0245[2006-11-10].
+\url{http://jonline.nwu.edu.cn/wenzhang/206187.pdf}}证实了这一观点，氩原子的第一激发能事实上在$\sim 13 \mathrm{\ eV}$附近，实验测得的$E_1$可能事实上对应氩的第二激发态。
+\par
+\textbf{改变灯丝电压为$4 \ \volt$，重复实验}，得到的电流-电压关系如\cref{curve4v}
+\cpicn{0.5}{curve4v}{灯丝电压为$4\ \volt$时的电压-电流关系曲线}
+曲线的形状与\cref{curve3v}几乎相同，但电流增大了$1\sim 2$个量级。这可能是因为灯丝电压增大使得温度升高，发射的电子数目显著增大。得到的曲线有5个极小值，但由于灯丝电压的增大，\cref{curve3v}中的第二个峰消失了。沿用\cref{englev}中的记号，按\cref{caleng}得到
+\begin{align}
+ E_2 &= 38\ \mathrm{eV} \\
+ E_3 &= 50\ \mathrm{eV} \\
+ E_4 &= 62\ \mathrm{eV} \\
+ E_5 &= 74\ \mathrm{eV} \\
+ E_6 &= 86\ \mathrm{eV}
+\end{align}
+得到的数值与之前大同小异。由于延伸了测量范围，我们又得到了一个能级。$E_n$与$n$之间依然有很好的线性关系，我们将两组灯丝电压不同时得到的各能级值联合在一个作回归分析，得到的散点图与回归直线如\cref{fituni}。\cpicn{0.6}{fituni}{所有数据点的回归分析}其方程为
+\beq
+E(n) = 11.8n + 15.0\ \mathrm{eV}
+\eeq
+将$n = 0,1,2,3,4,5,6$代入上式，就是本次实验对氩原子各激发态能量的测量结果（第一激发态对应$n=0$）。
+\\
+\ 
+\\
+2. \textbf{结合资料对实验结果的进一步讨论}\par
+能量与指标$n$呈线性关系事实上是一个不平凡的事实，因为对单电子原子，第$n$激发态的能量与基态的能量差有如下关系
+\beq
+E_n \propto (1 - \frac{1}{n^2})
+\eeq
+而对于氦原子，其外层电子被全部填满，这可能使得它的能级行为与单电子原子迥然不同。
+\par
+我们在nist数据库\footnote{\url{https://physics.nist.gov/PhysRefData/ASD/levels_form.html}}查询Ar-I的激发态能量数据\footnote{Kramida, A., Ralchenko, Yu., Reader, J., and NIST ASD Team (2018). NIST Atomic Spectra Database (ver. 5.6.1), [Online]. Available: https://physics.nist.gov/asd [2019, March 13]. National Institute of Standards and Technology, Gaithersburg, MD. DOI: https://doi.org/10.18434/T4W30F}，发现可能的能级达到上千个，但它们很多是大同小异的。在内层电子的分布为$3s^2 3p^5$时，主要的两种激发态能量数值与对应的电子分布位形（只考虑能级，其他对能量影响较小的量子数）。
+\begin{align}
+E(3s^2 3p^5 4\cdots) &\simeq 12\ \mathrm{eV} \\
+E(3s^2 3p^5 3d)\text{ 以及其他构型}  &\simeq 15\ \mathrm{eV} \label{3s23p5}
+\end{align}
+这两组位形对应的能量值对应我们根据实验数据猜出的可能存在的激发态$E_0 \sim 15.0 \mathrm{\ eV}$。在内层电子离开$3s^2 3p^5$进入$3s^1 3p^6$分布时，能量发生突变
+\beq \label{3s13p6}
+E(3s^1 3p^6 \cdots) \simeq 28\ \mathrm{eV}
+\eeq
+这组能量对应实际测得的第一个激发态$E_1 \sim 27.8 \mathrm{\ eV}$。
+\par
+这之后，氩的第一个电子被电离，形成Ar-II。再次查询nist数据库，得到Ar-II的各能级数据\footnote{Kramida, A., Ralchenko, Yu., Reader, J., and NIST ASD Team (2018). NIST Atomic Spectra Database (ver. 5.6.1), [Online]. Available: https://physics.nist.gov/asd [2019, March 13]. National Institute of Standards and Technology, Gaithersburg, MD. DOI: https://doi.org/10.18434/T4W30F }，发现可能的能级依然非常之多，但它们依然可以根据电子分布位形归类。注意，这里的能量零点是Ar-II的基态$3s^2 3p^5$对应的能量，也就几乎是\cref{3s23p5}中的能量值。第一激发态为
+\beq
+E(3s^1 3p^6) = 13.48\ \mathrm{eV}
+\eeq
+对应\cref{3s13p6}中指示的Ar-I最高能量，也就是其电离能。内层电子位形为$3s^23p^4$的能级非常之多，几乎呈连续分布，但大多数分布在$\sim 25\ \mathrm{eV}$附近。将这个数值与Ar-I的电离能相加，大概结果就是$\sim 38\ \mathrm{eV}$，是实验测得的第二激发态$E_2 = 38.6\ \mathrm{eV}$。
+\par
+根据以上讨论，我们可以对氩原子各激发态的能量与$n$大致呈线性关系作如下定性解释：
+\begin{enumerate}
+\item 对氩原子的每个电子而言，它大致上有两类激发态。第一类激发态的能量在$12-15\ \mathrm{eV}$间，第二类激发态的能量在$26-28\ \mathrm{eV}$间。这两类激发态的能量几乎是1:2的关系；
+\item 第二类激发态与电离能几乎相等；
+\item 当氩原子吸收能量时，第一个电子先吸收能量，发生跃迁。当第一个电子吸收足够多的能量以至于它发生电离时，若原子吸收的能量仍有剩余，第二个电子再次发生相同过程，从基态到达第一类激发态或完全电离，若有剩余，第三个电子继续发生类似反应，这种过程一直进行直至原子吸收的能量耗尽。
+\item 由于两类激发态间的比例关系，使得无论有多少电子发生跃迁，原子的总激发能量都近似是某个整数的倍数。
+\end{enumerate}
+我们举例阐释上面模型对实验事实的解释。例如，氩原子的3个电子发生电离的对应能量是
+\beq
+E(\mathrm{Ar-IV})\simeq 27\times 3 = 51\ (\mathrm{eV})
+\eeq
+这几乎就是实验测得的第三个极小值点。再例如，氩原子的3个原子发生电离且有第4个电子跃迁到第一类激发态时，对应的能量是
+\beq
+E(\mathrm{Ar-IV,\ excited}) \simeq 27\times 3 + 13 = 64\ (\mathrm{eV})
+\eeq
+这与实验测得的第四个极小值点相差无几。
+\par
+上面的唯象模型的适用范围为前几个电子的激发/电离过程。可以想象，当电离的电子数进一步增多，外层电子感受到的势场将发生较大变化，使得两类激发态的能量1:2的比例关系减弱甚至出现更多的激发态类别，模型失效。但在实验的能量范围内，这个模型较好地解释了实验现象。
+\\
+\ 
+\\
+3.\textbf{实验的改进建议}\par
+结合当天做实验的各类情况，我对这个实验有如下改进建议：
+\begin{enumerate}
+\item 因为使用了与测量仪器不同厂家的FH管，电流计指示的电流始终是一个负值，也就是说，由于仪器的不匹配，电流计事实上是反接进电路的，这可能存在一些潜在问题，并且，由于仪器的改造，讲义需要更新；
+\item 不需要苛求实验测量得过于精确，特别是对电流的测量不需要等到示数完全稳定后再读数，只需要找到电流的极小值对应的加速电压值就能很好地得出实验结果；
+\item 当天实验无法使用计算机自动测量，但在这个实验中，自动测量事实上是很重要的，它可以使搜寻电流极小值点的精度大大提高，也可以减小人为读数（示数不稳定）带来的误差；
+\item 实验现象，特别是能量与指标间的线性关系非常有趣，值得进一步探究；
+\item 实验要求在$<85\ \volt$范围内调整加速电压，但事实上在$85\ \volt$附近恰好有一个吸收峰，因此应该适当扩大测量范围。
+\end{enumerate}
+\ 
+\\
 \textbf{【实验思考题】}\par
-(Content)
-
+见【实验前思考题】。
 \end{document}
