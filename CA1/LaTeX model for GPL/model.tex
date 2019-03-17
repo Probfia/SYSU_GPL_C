@@ -1,0 +1,310 @@
+%A LaTeX model for SYSU General Phys. Lab. by Probfia Gao.
+%用XeLaTeX编译
+\documentclass[11pt,a4paper]{ctexart}
+
+%在下面补全实验名，例如 实验BB3 光电效应实验。
+\newcommand{\ExpeName}{实验CA1 密立根油滴实验}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[hmargin=1.25in,vmargin=1in]{geometry}
+\usepackage{pdfpages}
+\usepackage[colorlinks,
+            linkcolor=red,
+		 urlcolor=black]{hyperref}
+\usepackage{cleveref}
+
+\crefname{equation}{}{}
+\crefname{figure}{图}{图}
+\crefname{footnote}{注释}{注释}
+
+%\cpic{<尺寸>}{<文件名>}}用于生成居中的图片。
+\newcommand{\cpic}[2]{
+\begin{center}
+\includegraphics[scale=#1]{#2}
+\end{center}
+}
+
+%\cpicn{<尺寸>}{<文件名>}{<注释>}用于生成居中且带有注释的图片，其label为图片名。
+\newcommand{\cpicn}[3]
+{
+\begin{figure}[h!]
+\cpic{#1}{#2}
+\caption{#3\label{#2}}
+\end{figure}
+}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{equation}\begin{aligned}}
+\newcommand{\eea}{\end{aligned}\end{equation}}
+
+%输入单位和数学常数
+%下面所有命令需在公式环境下使用
+\newcommand{\e}{\mathrm{\ e}}   %自然常数e = \e
+\newcommand{\im}{\mathrm{\ i}}   %虚数单位i = \im
+\newcommand{\meter}{\mathrm{\ m}}      %单位/前缀 = \单位/前缀英文名
+\newcommand{\newton}{\mathrm{\ N}}  
+\newcommand{\joule}{\mathrm{\ J}}
+\newcommand{\second}{\mathrm{\ s}}
+\newcommand{\gram}{\mathrm{\ g}}
+\newcommand{\ampere}{\mathrm{\ A}}
+\newcommand{\kilogram}{\mathrm{\ kg}}
+\newcommand{\kelvin}{\mathrm{\ K}}
+\newcommand{\mole}{\mathrm{\ mol}}
+\newcommand{\volt}{\mathrm{\ V}}
+\newcommand{\degreeC}{\ ^\circ \mathrm{C}}  %摄氏度符号 = \degreeC
+
+
+
+\pagestyle{fancy}
+
+\fancyhead[L]{\footnotesize{中山大学物理与天文学院基础物理实验}}
+\fancyhead[R]{\footnotesize{\ExpeName}}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+%第一页
+\cpic{0.255}{e1}%学生信息和计分表格
+\begin{center}
+\LARGE\textbf{{\ExpeName}}
+\end{center}
+\large{【实验报告注意事项】}
+\begin{enumerate}
+ \item 实验报告由三部分组成：
+ \begin{enumerate}
+  \item[1)]预习报告：（提前一周）认真研读\textbf{\uline{实验讲义}}，弄清实验原理；实验所需的仪器设备、用具及其使用（强烈建议到实验室预习），完成讲义中的预习思考题；了解实验需要测量的物理量，并根据要求提前准备实验记录表格（由学生自己在实验前设计好，可以打印）。预习成绩低于10分（共20分）者不能做实验。
+  \item[2)]实验记录：认真、客观记录实验条件、实验过程中的现象以及数据。实验记录请用珠笔或者钢笔书写并签名（{\color{red}用铅笔记录的被认为无效}）。{\color{red}保持原始记录，包括写错删除部分，如因误记需要修改记录，必须按规范修改。}（不得输入电脑打印，但可扫描手记后打印扫描件）；离开前请实验教师检查记录并签名。
+  \item[3)]分析讨论：处理实验原始数据（学习仪器使用类型的实验除外），对数据的可靠性和合理性进行分析；按规范呈现数据和结果（图、表），包括数据、图表按顺序编号及其引用；分析物理现象（含回答实验思考题，写出问题思考过程，必要时按规范引用数据）；最后得出结论。
+ \end{enumerate}
+ \textbf{实验报告}就是预习报告、实验记录、和数据处理与分析合起来，加上本页封面。
+ \item 每次完成实验后的一周内交\textbf{实验报告}。
+ \item 除实验记录外，实验报告其他部分建议双面打印。
+\end{enumerate}
+\ 
+\\
+\ 
+
+\begin{flushright}                                                           %模板作者
+\tiny{
+A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.weibo.com/3532532974/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1}{Probfia} Gao.}\\ Adopted from the \href{http://lovephysics.sysu.edu.cn/lib/exe/fetch.php?media=courses:secondlevelzhuhai:report.docx}{original MS Word model} on \href{http://lovephysics.sysu.edu.cn}{Lovephysics}.\\ You can view it on \href{https://github.com/Probfia/SYSU_GPL_C}{Github}.}
+\end{flushright}
+
+\newpage%预习报告
+\begin{center}
+\LARGE{\textbf{\ExpeName}}
+\end{center}
+\textbf{【实验目的】}
+\begin{enumerate}
+ \item[1.] 学习用油滴实验测量电子电荷的原理。
+ \item[2.] 利用静态法和动态法观测带电油滴的运动状态，测量不同带电油滴的电荷量，验证电荷的不连续性，测量电子电荷值$e$。
+ \item[3.] 了解CCD摄像机、光学系统的成像原理，了解显微测量方法以及视频信号处理技术的工程应用等。
+\end{enumerate}
+\textbf{【仪器用具】}
+%将讲义中的表格截图保存为t1在该文件夹下后删去下一行之前的%符号，合理调整scale参数。
+\cpic{0.3}{t1}
+%或者自己去 https://www.tablesgenerator.com/ 做一个表。
+\textbf{【原理概述】}\par
+该实验测量元电荷$e$的值，用到的方法著名的密立根油滴法。具体而言，实验有两种方法测量元电荷的值。
+\par
+第一种方法称为静态平衡法，它利用了油滴重力与电场力或空气阻力的平衡（浮力忽略不计）。油滴在无电场的空气中匀速下落的平衡方程是
+\beq \label{1steq}
+\frac{4\pi}{3}r^3 \rho_o g = 6\pi \frac{\eta}{1 + b/p r} \frac{L}{t_g}
+\eeq
+从中解得半径$r$和油滴质量$m$。再调整电压，使得电场力和重力能够平衡
+\beq
+mg = \frac{qU}{L}
+\eeq
+以上两式联立就可以得到电荷量的表达式
+\beq \label{staq}
+q = \frac{18\pi}{\sqrt{2\rho_0 g}}[\frac{\eta L}{t_g (1 + b/p r)}]^{3/2} \frac{d}{U} \\
+\eeq
+其中
+\beq
+r = \sqrt{\frac{9\pi v_g}{2\rho_o g}}
+\eeq
+\par
+第二种方法称为动态法，它利用油滴在无电场下匀速下降和较强电场下匀速上升的速度比测量电荷量。油滴上升时的速度$v_e$满足平衡方程
+\beq
+6\pi r \eta v_e = q\frac{U}{d} - mg
+\eeq
+带入之前得到的$v_g = \cfrac{L}{t_g}$和$m$的表达式即得
+\beq \label{dynq}
+q = \frac{18\pi}{\sqrt{2\rho_0 g}}[\frac{\eta L}{t_g (1 + b/p r)}]^{3/2} \frac{d}{U} (\frac{1}{t_e} +\frac{1}{t_g}) \frac{1}{\sqrt{t_g}}
+\eeq
+令$t_e \to \infty$上式恢复到静态法的公式。
+\\
+\ 
+\\
+\textbf{【实验前思考题】}A
+\begin{enumerate}
+ \item[1.] \textbf{密立根利用油滴测定电子电荷的基本原理是什么？}\par
+就是力的平衡原理，别无他尔。
+ \item[2.] \textbf{什么是静态(平衡)测量法和动态(非平衡)测量法？两种方法有何不同与优缺点？测量中需注意哪些问题？}\par
+关于两种方法的概念见【原理概述】部分（\cref{1steq}到\cref{eeq}）。静态法测量精度较高，但调整油滴处于静止状态较为不易；动态法对油滴的运动状态的限制较弱，从而降低了操作难度，但因为匀速上升很难精确达到，精度不如静态法。测量时需要注意安全，精密调节仪器的位置和参数。
+\item[3.] \textbf{为什么必须保证油滴在测量范围内做匀速运动或静止？怎样控制油滴运动？}\par
+因为实验的测量原理就是力的平衡原理，所以当然需要油滴达到匀速运动或静止状态。油滴运动通过控制平衡电压来实现。
+\end{enumerate}
+
+\newpage%实验记录
+\cpic{0.255}{e2}%学生信息表格
+\begin{center}
+\LARGE{\textbf{\ExpeName}}
+\end{center}
+\textbf{【实验内容、步骤、结果】}\\
+1. \textbf{调整和熟练仪器的使用}\par
+按照讲义要求，调整仪器，学习控制油滴在视场中的运动。
+\\
+\ 
+\\
+2. \textbf{平衡法测量油滴所带的电荷量}\par
+按照讲义要求，记录5个油滴的实验数据如下：
+\begin{table}[h!]
+\centering
+\caption{平衡法测量第一个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+平衡电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[h!]
+\centering
+\caption{平衡法测量第二个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+平衡电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[h!]
+\centering
+\caption{平衡法测量第三个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+平衡电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\newpage
+\begin{table}[h!]
+\centering
+\caption{平衡法测量第四个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+平衡电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[h!]
+\centering
+\caption{平衡法测量第五个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+平衡电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\vspace{1cm}
+\noindent 3. \emph{（选做）}\textbf{用动态法测量油滴所带的电荷量}\par
+按照讲义要求，记录5个油滴的实验数据如下：
+\begin{table}[h!]
+\centering
+\caption{动态法测量第一个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+提升电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+提升时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[h!]
+\centering
+\caption{动态法测量第二个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+提升电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+提升时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[h!]
+\centering
+\caption{动态法测量第三个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+提升电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+提升时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\newpage
+\begin{table}[h!]
+\centering
+\caption{动态法测量第四个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+提升电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+提升时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[h!]
+\centering
+\caption{动态法测量第五个油滴的实验数据}
+\label{my-label}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+实验次数 & 1 & 2 & 3 & 4 & 5 & 平均值 \\ \hline
+提升电压/V &  &  &  &  &  &  \\ \hline
+下落时间/s &  &  &  &  &  &  \\ \hline
+提升时间/s &  &  &  &  &  &  \\ \hline
+电荷量/$10^{-19}\mathrm{\ C}$ &  &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+%\newline
+\textbf{【实验过程中遇到问题记录】}
+
+%生成最终报告时将上面内容全部删除或注释（用\iffalse \fi），将扫描得到的实验报告保存为Record.pdf在LaTeX model for GPL下，将下行命令的注释号删去。注意根据实际页数调整pages参数。
+%\includepdf[pages=1-3]{Record}
+
+\newpage%分析与讨论
+\cpic{0.255}{e3}%学生信息表格
+\begin{center}
+\LARGE\textbf{{\ExpeName}}
+\end{center}
+\textbf{【分析与讨论】}\par
+(Content)
+\newline
+\textbf{【实验思考题】}\par
+(Content)
+
+\end{document}
