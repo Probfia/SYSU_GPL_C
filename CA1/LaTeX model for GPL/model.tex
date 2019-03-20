@@ -302,7 +302,108 @@ q = \frac{18\pi}{\sqrt{2\rho_0 g}}[\frac{\eta L}{t_g (1 + b/p r)}]^{3/2} \frac{d
 \LARGE\textbf{{\ExpeName}}
 \end{center}
 \textbf{【分析与讨论】}\par
-(Content)
+\documentclass{book}
+\usepackage{xeCJK}
+\usepackage{amsmath}
+\usepackage{cleveref}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{equation}\begin{aligned}}
+\newcommand{\eea}{\end{aligned}\end{equation}}
+
+\newcommand{\charge}{\times 10^{-19}\mathrm{\ C}}
+
+\begin{document}
+
+1. \textbf{平衡法测油滴所带的电荷量}\par
+实验共测量了5颗油滴，它们的带电量由仪器用公式直接算出，为
+\begin{gather}
+	q_1 = 7.739 \charge \\
+	q_2 = 3.058 \charge \\
+	q_3 = 3.024 \charge \\
+	q_4 = 13.680 \charge \\
+	q_5 = 4.718 \charge
+\end{gather}
+用元电荷的估计值$1.6 \charge$来除以上面的电荷量，得到每个油滴的所带的净电子数为
+\begin{gather}
+	n_1 = \frac{7.739}{1.6} = 4.84 \simeq 5\\
+	n_2 = \frac{3.058}{1.6} = 1.91 \simeq 2\\
+	n_3 = \frac{3.024}{1.6} = 1.89 \simeq 2\\
+	n_4 = \frac{13.680}{1.6} = 8.55 \simeq 9\\
+	n_5 = \frac{4.718}{1.6} = 2.95 \simeq 3
+\end{gather}
+我们先不论$n_4$接近半整数的取值，而先将其简单地四舍五入进行元电荷的计算。5颗油滴各自代表的元电荷测量值为
+\begin{gather}
+	e_1 = \frac{7.739\charge}{5} = 1.548\charge\\
+	e_2 = \frac{3.058\charge}{2} = 1.529\charge\\
+	e_3 = \frac{3.024\charge}{2} = 1.512\charge\\
+	e_4 = \frac{13.680\charge}{9} = 1.520\charge\\
+	e_5 = \frac{4.718\charge}{3} 1.553\charge
+\end{gather}
+综合测量结果，得到元电荷的测量平均值为
+\bea
+	e &= \frac{1.548+1.529+1.512+1.52+1.573}{5}\charge  \\
+	&= 1.532\charge
+\eea
+平均值的标准偏差为实验误差，其值计算为
+\bea
+	\sigma_e &= \frac{1}{\sqrt{5}} (\frac{1}{5-1}[(1.548-1.536)^2 +(1.529-1.536)^2 +(1.512-1.536)^2 + \\ 
+&(1.52-1.536)^2 +(1.573-1.536)^2 ])^{\frac{1}{2}} \charge \\
+	&= 0.007\charge
+\eea
+综合测量值表示为
+\beq
+	e = (1.532 \pm 0.007)\charge
+\eeq
+我们发现，不论是看单个数值，还是看整体的综合数据，测量得到的$e$都是偏小的。仪器可能存在一定的系统误差，误差的来源可能是因为实验参数的设置偏差（例如大气压和重力加速度）；仪器本身的制造偏差（例如极板间的距离可能与预设值有所偏差，或电压的显示值偏大）。
+\par
+我们发现，测量出半整数电荷不是因为别的，就是因为这个油滴的带电量较大，而对单个元电荷测量的误差是相当的；这些相当的误差累计，导致了恰好累计出了半个元电荷的差距。事实上，用这颗电荷测量出的$e$值落在综合测量值的$3\sigma$范围内，因此，半整数电荷不是别的，就是误差的累计。用实验得到的元电荷值计算它的电子数就是一个整数。
+\\
+\par
+2.\textbf{动态法测油滴所带的电荷量}
+对于动态法，实验同样测量了5颗不同油滴，并由仪器直接给出电荷量，分别为
+\begin{gather}
+	q_1 = 6.309 \charge \\
+	q_2 = 3.103 \charge \\
+	q_3 = 3.051 \charge \\
+	q_4 = 3.073 \charge \\
+	q_5 = 1.553 \charge
+\end{gather}
+它们所带的净电子数估计值为
+\begin{gather}
+	n_1 = \frac{6.309}{1.6} = 3.94 \simeq 4\\
+	n_2 = \frac{3.103}{1.6} = 1.94 \simeq 2\\
+	n_3 = \frac{3.051}{1.6} = 1.91 \simeq 2\\
+	n_4 = \frac{3.073}{1.6} = 1.92 \simeq 2\\
+	n_5 = \frac{1.553}{1.6} = 0.97 \simeq 1
+\end{gather}
+各个$n_i$的值都较接近的整数要小一些，依然体现出了系统误差的存在。同样的方法处理各个油滴的实验数据，得到它们各自代表的元电荷测量值为
+\begin{gather}
+	e_1 = \frac{6.309\charge}{4} = 1.578\charge\\
+	e_2 = \frac{3.103\charge}{2} = 1.552\charge\\
+	e_3 = \frac{3.051\charge}{2} = 1.526\charge\\
+	e_4 = \frac{3.073\charge}{2} = 1.537\charge\\
+	e_5 = \frac{1.553\charge}{1} = 1.553\charge
+\end{gather}
+平均值为
+\bea
+	e &= \frac{1.578+1.552+1.526+1.537+1.553}{5}\charge  \\ &= 1.549\charge
+\eea
+平均值的标准偏差为
+\bea
+\sigma_e &= \frac{1}{\sqrt{5}} (\frac{1}{5-1}[(1.578-1.549)^2 +(1.552-1.549)^2 +(1.526-1.549)^2 + \\
+&(1.537-1.549)^2 +(1.553-1.549)^2 ])^{\frac{1}{2}} \charge \\
+&= 0.008\charge
+\eea
+综合测量值表示为
+\beq
+	e = (1.549 \pm 0.008)\charge
+\eeq
+我们发现，动态法测量带来的随机误差稍大，但与真实值的相对误差却稍小。
+
+
+\end{document}
 \newline
 \textbf{【实验思考题】}\par
 (Content)
