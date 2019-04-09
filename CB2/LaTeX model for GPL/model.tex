@@ -1,0 +1,236 @@
+%A LaTeX model for SYSU General Phys. Lab. by Probfia Gao.
+%用XeLaTeX编译
+\documentclass[11pt,a4paper]{ctexart}
+
+%在下面补全实验名，例如 实验BB3 光电效应实验。
+\newcommand{\ExpeName}{实验CB2 塞曼效应}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[hmargin=1.25in,vmargin=1in]{geometry}
+\usepackage{pdfpages}
+\usepackage[colorlinks,
+            linkcolor=red,
+		 urlcolor=black]{hyperref}
+\usepackage{cleveref}
+
+\crefname{equation}{}{}
+\crefname{figure}{图}{图}
+\crefname{footnote}{注释}{注释}
+\crefname{table}{表}{表}
+
+%\cpic{<尺寸>}{<文件名>}}用于生成居中的图片。
+\newcommand{\cpic}[2]{
+\begin{center}
+\includegraphics[scale=#1]{#2}
+\end{center}
+}
+
+%\cpicn{<尺寸>}{<文件名>}{<注释>}用于生成居中且带有注释的图片，其label为图片名。
+\newcommand{\cpicn}[3]
+{
+\begin{figure}[h!]
+\cpic{#1}{#2}
+\caption{#3\label{#2}}
+\end{figure}
+}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{equation}\begin{aligned}}
+\newcommand{\eea}{\end{aligned}\end{equation}}
+
+%输入单位和数学常数
+%下面所有命令需在公式环境下使用
+\newcommand{\e}{\mathrm{\ e}}   %自然常数e = \e
+\newcommand{\im}{\mathrm{\ i}}   %虚数单位i = \im
+\newcommand{\meter}{\mathrm{\ m}}      %单位/前缀 = \单位/前缀英文名
+\newcommand{\newton}{\mathrm{\ N}}  
+\newcommand{\joule}{\mathrm{\ J}}
+\newcommand{\second}{\mathrm{\ s}}
+\newcommand{\gram}{\mathrm{\ g}}
+\newcommand{\ampere}{\mathrm{\ A}}
+\newcommand{\kilogram}{\mathrm{\ kg}}
+\newcommand{\kelvin}{\mathrm{\ K}}
+\newcommand{\mole}{\mathrm{\ mol}}
+\newcommand{\volt}{\mathrm{\ V}}
+\newcommand{\degreeC}{\ ^\circ \mathrm{C}}  %摄氏度符号 = \degreeC
+
+
+\newcommand{\emptyline}{\\ \ \\}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{\footnotesize{中山大学物理与天文学院基础物理实验}}
+\fancyhead[R]{\footnotesize{\ExpeName}}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+%第一页
+\cpic{0.255}{e1}%学生信息和计分表格
+\begin{center}
+\LARGE\textbf{{\ExpeName}}
+\end{center}
+\large{【实验报告注意事项】}
+\begin{enumerate}
+ \item 实验报告由三部分组成：
+ \begin{enumerate}
+  \item[1)]预习报告：（提前一周）认真研读\textbf{\uline{实验讲义}}，弄清实验原理；实验所需的仪器设备、用具及其使用（强烈建议到实验室预习），完成讲义中的预习思考题；了解实验需要测量的物理量，并根据要求提前准备实验记录表格（由学生自己在实验前设计好，可以打印）。预习成绩低于10分（共20分）者不能做实验。
+  \item[2)]实验记录：认真、客观记录实验条件、实验过程中的现象以及数据。实验记录请用珠笔或者钢笔书写并签名（{\color{red}用铅笔记录的被认为无效}）。{\color{red}保持原始记录，包括写错删除部分，如因误记需要修改记录，必须按规范修改。}（不得输入电脑打印，但可扫描手记后打印扫描件）；离开前请实验教师检查记录并签名。
+  \item[3)]分析讨论：处理实验原始数据（学习仪器使用类型的实验除外），对数据的可靠性和合理性进行分析；按规范呈现数据和结果（图、表），包括数据、图表按顺序编号及其引用；分析物理现象（含回答实验思考题，写出问题思考过程，必要时按规范引用数据）；最后得出结论。
+ \end{enumerate}
+ \textbf{实验报告}就是预习报告、实验记录、和数据处理与分析合起来，加上本页封面。
+ \item 每次完成实验后的一周内交\textbf{实验报告}。
+ \item 除实验记录外，实验报告其他部分建议双面打印。
+\end{enumerate}
+\ 
+\\
+\ 
+
+\begin{flushright}                                                           %模板作者
+\tiny{
+A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.weibo.com/3532532974/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1}{Probfia} Gao.}\\ Adopted from the \href{http://lovephysics.sysu.edu.cn/lib/exe/fetch.php?media=courses:secondlevelzhuhai:report.docx}{original MS Word model} on \href{http://lovephysics.sysu.edu.cn}{Lovephysics}.\\ You can view it on \href{https://github.com/Probfia/SYSU_GPL_C}{Github}.}
+\end{flushright}
+
+\newpage%预习报告
+\begin{center}
+\LARGE{\textbf{\ExpeName}}
+\end{center}
+\textbf{【实验目的】}
+\begin{enumerate}
+ \item[1.]通过观察原子谱线在外磁场中的分裂现象，加深对电子“自旋”、“两个角动量的耦合”、“两个电子之间的$ LS $耦合”、“角动量守恒”、“多电子原子和电子组态”、“能级跃迁”、“选择定则”等概念的理解，验证原子具有磁矩及其空间取向的量子化，进一步认识原子的内部结构；
+ \item[2.]用F-P干涉仪观察汞（Hg）原子546.1 nm 谱线在外磁场中的分裂现象（即“反常塞曼效应”），测量电子的荷质比$ e/m$；
+ \item[3.]验证光子具有角动量及角动量守恒定律，了解光的偏振理论及其产生机制，学习偏振片的原理及使用方法。
+\end{enumerate}
+\textbf{【仪器用具】}
+%将讲义中的表格截图保存为t1在该文件夹下后删去下一行之前的%符号，合理调整scale参数。
+\cpic{0.3}{t1}
+%或者自己去 https://www.tablesgenerator.com/ 做一个表。
+\textbf{【原理概述】}\par
+该实验用F-P干涉仪观察汞的反常塞曼效应。\par
+对原子施加沿$z$轴方向的外磁场$B$后，由于电子的轨道角动量和自旋角动量的$z$轴分量都是量子化的，施加的外磁场将导致哈密顿算符发生改变，原先简并的本征态发生分裂。汞的外层有2个电子，它们的轨道角动量量子数和自旋角动量量子数分别标记为$(l_1,m_1)$和$(l_2,m_2)$。两个电子的轨道角动量和自旋角动量分别相加，得到总轨道角动量$L$和总自旋角动量$S$，两者再相加得到总的角动量$J$，这种相加模式称为$LS$耦合。
+\par
+在这个实验中，汞原子有两种可能的电子组态，分别对应的各角动量量子数如\cref{table1}
+\begin{table}[h!]
+\centering
+\caption{汞原子两种电子组态对应的量子数}
+\label{table1}
+\begin{tabular}{|c|c|c|}
+\hline
+ & $^3 S_1\ (6s7s)$ & $^3 P_2\ (6s7p)$ \\ \hline
+$L$ & 0 & 1 \\ \hline
+$S$ & 1 & 1 \\ \hline
+$J$ & 1 & 2 \\ \hline
+\end{tabular}
+\end{table}
+\par
+磁矩$\vec{J}$在外磁场$B$中具有额外的势能
+\beq
+U = -\vec{\mu}_J \cdot \vec{B}
+\eeq
+或者用角动量$J$的量子数表示为
+\beq \label{addeng}
+U = m_J g_J \mu_B B
+\eeq
+若电子在主量子数$n$的不同值间跃迁的发射频率为$\nu$，加入外磁场后，原子具有了由\cref{addeng}给出的额外能量，从而带来了额外的频率。这一频率值是
+\beq
+\Delta \nu = (M_2 g_2 - M_1 g_1) \frac{eB}{4 \pi m} = 46.7 (M_2 g_2 - M_1 g_1) c B \ (\mathrm{Hz})
+\eeq
+\par
+塞曼效应中发射的光子有两种偏振模式：垂直于磁场的$\sigma^\pm$偏振和平行于磁场的$\pi$偏振。$\sigma^\pm$偏振是垂直磁场平面的圆偏振光，其角动量方向与磁场平行或相反；$\pi$偏振前后原子角动量不变，光子角动量平行于磁场，是与磁场平行的线偏振光。
+\emptyline
+\textbf{【实验前思考题】}
+\begin{enumerate}
+ \item[1.] \textbf{光子是否具有角动量？试描述光子角动量方向与光的偏振方向之间的关系。}\par
+光子具有角动量，其方向与其圆偏振方向满足右手螺旋定则关系。
+ \item[2.] \textbf{用同一级条纹的内外圈分别计算电子的荷质比，结果一样吗？试简述原因。}\par
+ \item[3.] \textbf{请利用（20）至（23）式，计算汞原子 3S1（6s7s）和 3P2（6s7p）能级所对应的量子数（见表 1），并给出详细的计算过程。}\par
+对$^3S$组态，$L = 0$，$S=1$，$J$的可能取值从$|L-S|$到$L + S$，其值都是1，故$J$只能取1  。\par
+对$^3P$组态，$L = 1$，$S = 1$，$j$的可能取值为$J = 0,1,2$，表中给出的是$J = 2$的情况。
+ \item[4.] \textbf{请利用（2）、（8）和（20）式，并结合$\vec{J} = \vec{L} + \vec{S}$和$\vec{\mu}_J = \vec{\mu}_L + \vec{\mu}_S$（注意此时的$\vec{\mu}_J$是图 5 中的$\vec{\mu}_J$，详细见脚注 22），导出朗德因子的一般表达式（28）式，并给出详细的推导过程。}\par
+由$\vec{\mu}_L = -\gamma \vec{L}$和$\vec{\mu}_S = -2\gamma \vec{S}$和
+\beq
+\vec{\mu}_J = \vec{\mu}_L +\vec{\mu}_S
+\eeq
+并注意到$\vec{J} = \vec{L} + \vec{S}$，有
+\beq
+-\vec{\mu}_J \equiv g_J \gamma \vec{J} = \gamma \vec{L} + 2\gamma \vec{S}
+\eeq
+也即
+\beq
+g_J \vec{J} = \vec{L} + 2\vec{S}
+\eeq
+上式两边点乘$\vec{J}$得到
+\bea
+g_J \vec{J}^2 &= \vec{L} \cdot \vec{J} + 2\vec{S} \cdot \vec{J} \\
+&= \vec{L}^2 + \vec{S}\cdot \vec{L}  + 2\vec{S}^2 + 2\vec{S} \cdot \vec{L} \\
+&= \vec{L}^2 + \frac{3}{2} [(\vec{L} + \vec{S})^2 - \vec{L}^2 - \vec{S}^2] + 2\vec{S}^2 \\
+&= \frac{3}{2} \vec{J}^2 + \frac{1}{2}(\vec{S}^2 - \vec{L}^2) 
+\eea
+再注意到$\vec{J}^2 = J(J+1)\hbar^2$，$\vec{L}^2 = L(L+1)\hbar^2$，$\vec{S}^2 = S(S+1)\hbar^2$，有
+\beq
+g_J J(J+1) = \frac{3}{2} J(J+1) + \frac{1}{2}[S(S+1)- L(L+1)]
+\eeq
+也即
+\beq
+g_J = \frac{3}{2} - \frac{L(L+1) - S(S+1)}{2J(J+1)}
+\eeq
+\item[5.] \textbf{请利用单电子情况下的（36）式，并结合钠双黄线的平均波长及其波长差（$\lambda_1 = 589.0 \mathrm{\ nm}$，$\lambda_2 = 589.6 \mathrm{\ nm}$），估算一下钠原子内部的磁感应强度$B_{int}$的值（提示：单电子情况下，两谱线的能级差为势能的两倍，即有；另需要利用到光子波长和频率之间的关系式。答案：钠原子内部的磁感应强度$B_{int}$的值为18.5 T）。}\par
+我们有
+\bea
+B_{int} &= \frac{1.5\Delta \nu}{46.7} \\
+&= \frac{1.5}{\Delta (\cfrac{1}{\lambda}) \times 46.7} \\
+& = 18.5\mathrm{\ (\mu T)}
+\eea
+
+\item[6.] \textbf{请结合第 3 题的计算结果，说明弱外磁场$B_{ext}<<B_{int}$成立时弱外磁场$B_{ext}$的取值范围，并确认本实验中电磁体的磁感应强度符合弱外磁场$B_{ext} \ll B_{int}$条件。}
+\item[7.] \textbf{请结合力与势能的关系式$\vec{F} \equiv - \nabla U$并利用（11）式，试推导磁矩在非均匀外磁场中的受力大小为$F_z = \mu_z \cfrac{\partial B_z}{\partial z} \ (B_x = B_y = 0)$（设外磁场方向在$z$轴方向，$F_z$为力在$z$方向上分量的大小）（提示：请利用郭硕鸿《电动力学》（第二版）一书附录中的矢量运算公式）。}\par
+磁矩$\vec{\mu}$在磁场$\vec{B}$中具有势能
+\beq
+U = -\vec{\mu} \cdot \vec{B}
+\eeq
+在这里，$\vec{B} = B_z \vec{e}_z$，有$U = - \mu_z B_z$，于是受力为
+\bea
+\vec{F} &= - \frac{\partial U}{\partial z} \vec{e}_z \\
+&=\mu_z \frac{\partial B_z}{\partial z} \vec{e}_z
+\eea
+也即
+\beq
+F_z = \mu_z \frac{\partial B_z}{\partial z}
+\eeq
+
+\item[8.] \textbf{请结合朗德因子的一般表达式（28）式，以及两个角动量耦合的一般规则（20）至（23）式，计算表 3 中汞原子 546.1nm 谱线对应的上下两个能级的各量子数及不同谱线（能级跃迁）的朗德因子（见图 9）。用“格罗春图”33（Grotrain 图）来表示汞原子 546.1nm谱线不同能级之间可能的跃迁。}
+
+\item[9.] \textbf{请回答什么是“反常塞曼效应”和“正常塞曼效应”，两者之间的区别是什么。请思考什么是“帕邢－巴克效应”及其形成的原因。}\par
+反常塞曼效应在电子净自旋为半奇数时发生，这时能级分裂为偶数个；正常塞曼效应则相反，在电子净自旋为整数时发生，这时能级分裂为奇数个。当外部磁场强于原子内部磁场时，电子间的耦合被破坏，使得谱线重新排列，这就是帕邢－巴克效应。
+
+\item[10.] \textbf{请回答电子的“自旋—轨道耦合”的本质是什么？它与电子之间的“LS 耦合”的区别是什么？}
+\end{enumerate}
+
+\newpage%实验记录
+\cpic{0.255}{e2}%学生信息表格
+\begin{center}
+\LARGE{\textbf{\ExpeName}}
+\end{center}
+\textbf{【实验内容、步骤、结果】}
+\par
+本实验自动测量和记录数据，结果由界面截图给出。
+\newline
+\textbf{【实验过程中遇到问题记录】}
+
+%生成最终报告时将上面内容全部删除或注释（用\iffalse \fi），将扫描得到的实验报告保存为Record.pdf在LaTeX model for GPL下，将下行命令的注释号删去。注意根据实际页数调整pages参数。
+%\includepdf[pages=1-3]{Record}
+
+\newpage%分析与讨论
+\cpic{0.255}{e3}%学生信息表格
+\begin{center}
+\LARGE\textbf{{\ExpeName}}
+\end{center}
+\textbf{【分析与讨论】}\par
+(Content)
+\newline
+\textbf{【实验思考题】}\par
+(Content)
+
+\end{document}
