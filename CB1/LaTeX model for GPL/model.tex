@@ -1,0 +1,249 @@
+%A LaTeX model for SYSU General Phys. Lab. by Probfia Gao.
+%用XeLaTeX编译
+\documentclass[11pt,a4paper]{ctexart}
+
+%在下面补全实验名，例如 实验BB3 光电效应实验。
+\newcommand{\ExpeName}{实验CB1 迈克尔逊干涉实验（激光干涉）}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[hmargin=1.25in,vmargin=1in]{geometry}
+\usepackage{pdfpages}
+\usepackage[colorlinks,
+            linkcolor=red,
+		 urlcolor=black]{hyperref}
+\usepackage{cleveref}
+\usepackage{float}
+
+\crefname{equation}{}{}
+\crefname{figure}{图}{图}
+\crefname{footnote}{注释}{注释}
+\crefname{table}{表}{表}
+
+%\cpic{<尺寸>}{<文件名>}}用于生成居中的图片。
+\newcommand{\cpic}[2]{
+\begin{center}
+\includegraphics[scale=#1]{#2}
+\end{center}
+}
+
+%\cpicn{<尺寸>}{<文件名>}{<注释>}用于生成居中且带有注释的图片，其label为图片名。
+\newcommand{\cpicn}[3]
+{
+\begin{figure}[H]
+\cpic{#1}{#2}
+\caption{#3\label{#2}}
+\end{figure}
+}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{equation}\begin{aligned}}
+\newcommand{\eea}{\end{aligned}\end{equation}}
+
+%输入单位和数学常数
+%下面所有命令需在公式环境下使用
+\newcommand{\e}{\mathrm{\ e}}   %自然常数e = \e
+\newcommand{\im}{\mathrm{\ i}}   %虚数单位i = \im
+\newcommand{\meter}{\mathrm{\ m}}      %单位/前缀 = \单位/前缀英文名
+\newcommand{\newton}{\mathrm{\ N}}  
+\newcommand{\joule}{\mathrm{\ J}}
+\newcommand{\second}{\mathrm{\ s}}
+\newcommand{\gram}{\mathrm{\ g}}
+\newcommand{\ampere}{\mathrm{\ A}}
+\newcommand{\kilogram}{\mathrm{\ kg}}
+\newcommand{\kelvin}{\mathrm{\ K}}
+\newcommand{\mole}{\mathrm{\ mol}}
+\newcommand{\volt}{\mathrm{\ V}}
+\newcommand{\degreeC}{\ ^\circ \mathrm{C}}  %摄氏度符号 = \degreeC
+
+
+\newcommand{\emptyline}{\par \ \\}
+
+
+\pagestyle{fancy}
+
+\fancyhead[L]{\footnotesize{中山大学物理与天文学院基础物理实验}}
+\fancyhead[R]{\footnotesize{\ExpeName}}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+%第一页
+\cpic{0.255}{e1}%学生信息和计分表格
+\begin{center}
+\LARGE\textbf{{\ExpeName}}
+\end{center}
+\large{【实验报告注意事项】}
+\begin{enumerate}
+ \item 实验报告由三部分组成：
+ \begin{enumerate}
+  \item[1)]预习报告：（提前一周）认真研读\textbf{\uline{实验讲义}}，弄清实验原理；实验所需的仪器设备、用具及其使用（强烈建议到实验室预习），完成讲义中的预习思考题；了解实验需要测量的物理量，并根据要求提前准备实验记录表格（由学生自己在实验前设计好，可以打印）。预习成绩低于10分（共20分）者不能做实验。
+  \item[2)]实验记录：认真、客观记录实验条件、实验过程中的现象以及数据。实验记录请用珠笔或者钢笔书写并签名（{\color{red}用铅笔记录的被认为无效}）。{\color{red}保持原始记录，包括写错删除部分，如因误记需要修改记录，必须按规范修改。}（不得输入电脑打印，但可扫描手记后打印扫描件）；离开前请实验教师检查记录并签名。
+  \item[3)]分析讨论：处理实验原始数据（学习仪器使用类型的实验除外），对数据的可靠性和合理性进行分析；按规范呈现数据和结果（图、表），包括数据、图表按顺序编号及其引用；分析物理现象（含回答实验思考题，写出问题思考过程，必要时按规范引用数据）；最后得出结论。
+ \end{enumerate}
+ \textbf{实验报告}就是预习报告、实验记录、和数据处理与分析合起来，加上本页封面。
+ \item 每次完成实验后的一周内交\textbf{实验报告}。
+ \item 除实验记录外，实验报告其他部分建议双面打印。
+\end{enumerate}
+\ 
+\\
+\ 
+
+\begin{flushright}                                                           %模板作者
+\tiny{
+A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.weibo.com/3532532974/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1}{Probfia} Gao.}\\ Adopted from the \href{http://lovephysics.sysu.edu.cn/lib/exe/fetch.php?media=courses:secondlevelzhuhai:report.docx}{original MS Word model} on \href{http://lovephysics.sysu.edu.cn}{Lovephysics}.\\ You can view it on \href{https://github.com/Probfia/SYSU_GPL_C}{Github}.}
+\end{flushright}
+
+\newpage%预习报告
+\begin{center}
+\LARGE{\textbf{\ExpeName}}
+\end{center}
+\textbf{【实验目的】}
+\begin{enumerate}
+ \item[1.] 了解迈克尔逊干涉仪的构造、原理和调节方法；
+ \item[2.] 学习用迈克尔逊干涉仪测量单色光波长的方法；
+ \item[3.] 学习用迈克尔逊干涉仪测量透明薄片折射率的方法。
+\end{enumerate}
+\textbf{【仪器用具】}
+%将讲义中的表格截图保存为t1在该文件夹下后删去下一行之前的%符号，合理调整scale参数。
+\cpic{0.3}{t1}
+%或者自己去 https://www.tablesgenerator.com/ 做一个表。
+\textbf{【原理概述】}\par
+该实验利用激光干涉测量单色光波长和玻璃折射率。
+\par
+激光干涉的原理符合光的叠加原理，即两束相干光具有光程差$L$时，当
+\beq
+L = k\lambda,\ k = 0,1,2,\cdots
+\eeq
+时，相位差为$\pi$的偶数倍，为出相长干涉，出现亮条纹。当
+\beq
+L = (k + \frac{1}{2})\lambda
+\eeq
+时，相位差为$\pi$的奇数倍，为相消干涉，出现暗条纹。\par
+而迈克尔逊干涉仪利用同一激光源发生的激光传播的两条不同路径的光程差不同，得到明纹和暗纹的位置，来求得一些相关物理量。非定域干涉时，两路径的光程差为
+\beq
+L = \sqrt{(Z+2d)^2 + R^2} - \sqrt{Z^2 + R^2} = \sqrt{Z^2 + R^2}(\sqrt{1+\frac{4d(Z+d)}{Z^2 + R^2}} - 1) \simeq 2d\cos \delta
+\eeq
+其中
+\beq
+\cos \theta = \frac{R}{\sqrt{Z^2 + R^2}}
+\eeq
+为虚光源$S_2'$（反射镜$M_2$反射光的虚光源）到成像点的连线与$z$轴的夹角。中心位置的光程差恒为$2d$，对应的条纹级别$k$最大，而当增大$d$时则会看到圆环从中心处出现，出现的亮环数显然是光程差的改变量与波长之比
+\beq
+N = \frac{2\Delta d}{\lambda}
+\eeq
+通过数出现的圆环数并测量出$\Delta d$就可以得到激光的波长$\lambda$。
+\par
+等倾干涉条纹是上面情况的特例，它的光程差表达式与之前相同，但干涉圆环成像在无穷远处。
+\par
+玻璃折射率的测量则利用等倾干涉进行，厚度为$t$的玻璃块旋转$\theta$角时，产生的干涉条纹变化数为$N$，则折射率的理论公式为
+\beq
+n = \frac{t \sin^2 \theta}{2t(1-\cos \theta) - N \lambda} + (1-\cos \theta - \frac{N\lambda}{2t})
+\eeq
+
+\textbf{【实验前思考题】}
+\begin{enumerate}
+ \item[1.] 什么是光的相干性？怎样才能获得相干光？\par
+光的相干性指两束光发生干涉的难易程度，体现了两束光的关联形状。相干光必须满足相位差恒定，偏振相同，频率相等或相差不大三个条件。
+ \item[2.] 什么是“相干长度”和“相干时间”？如何计算光的相干长度和相干时间？\par
+相干长度是相干波保持一定相干度所能传播的最大距离；相干时间为相干长度对应的最大传播时间。一束频率为$\Delta \omega$的相干时间为
+\beq
+\Delta \tau \sim \frac{1}{\Delta \omega}
+\eeq
+相干长度
+\beq
+\Delta l = c\Delta \tau \sim \frac{c}{\Delta \omega}
+\eeq
+ \item[3.] 迈克尔逊干涉仪能观察到干涉条纹的条件是什么？\par
+干涉仪产生干涉条纹的条件与光发生干涉的基本条件相同，具体到迈克尔逊干涉仪的具体构造，光程差需要远小于激光的相干长度，才能观察到显著的干涉条纹。
+ \item[4.] 什么是非定域干涉？什么是定域干涉？什么是等倾干涉？什么是等厚干涉？\par
+非定域干涉可以在光的交叠区域内任何地点被观察到，而定义干涉仅在一定的空间区域内存在；等倾干涉是光以相同的倾角入射均匀薄膜形成的干涉，干涉条纹的分布沿等倾角的圆环分布，等厚干涉是平行光垂直入射非均匀薄膜形成的，干涉条纹沿等厚度线分布。
+ \item[5.] 如何测量透明溶液的折射率？请自行就相关实验原理进行调研，并设计具体实验方案。\par
+把溶液装到一定厚度的长方体薄壁容器里旋转测量不就行了。
+ \item[6.] 尝试根据下图推导《基础物理实验（沈韩主编）》中第 227 页透明薄片的折射率公式（A7.8）（设转动$\theta$角时干涉圆环变化数为$N$个）。\par
+$\theta = 0$时对应的光程为$nt$，转动$\theta$角后，光线以$\theta$角入射薄片，折射角的正弦为
+\beq
+\sin \theta_t = \frac{\sin \theta}{n}
+\eeq
+对应的余弦值为
+\beq
+\cos \theta_t = \sqrt{1 - \frac{\sin^2 \theta}{n^2}}
+\eeq
+光程为
+\beq
+\frac{nt}{\cos \theta_t} = \frac{nt}{\sqrt{1 - \frac{\sin^2 \theta}{n^2}}}
+\eeq
+光程差产生的干涉圆环数为
+\beq
+\frac{nt}{\sqrt{1 - \frac{\sin^2 \theta}{n^2}}} - t = N\lambda
+\eeq
+
+\end{enumerate}
+
+\newpage%实验记录
+\cpic{0.255}{e2}%学生信息表格
+\begin{center}
+\LARGE{\textbf{\ExpeName}}
+\end{center}
+\textbf{【实验内容、步骤、结果】}
+\\
+1.\textbf{定域等倾干涉条纹的产生}\par
+按讲义要求搭建装置，在观察屏上观察到等倾干涉条纹。
+\emptyline
+2.\textbf{测量He-Ne激光器激光的波长}\par
+记录$M_1$出的精密测微头的读数$d_0 = $\uline{\hspace{2cm}}。调整精密移动头，每出现50个圆环时，记录一次读数$d_i$，填入\cref{table1}。
+\begin{table}[H]
+\centering
+\caption{每出现50个圆环时测微头的读数}
+\label{table1}
+\begin{tabular}{|p{15mm}|p{15mm}|p{15mm}|p{15mm}|p{15mm}|}
+\hline
+$d_1$ & $d_2$ & $d_3$ & $d_4$ & $d_5$ \\ \hline
+ &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+\emptyline
+3.\textbf{用旋转样品法测量透明薄片的折射率$n$}\par
+按讲义要求搭建装置，初始角度$\theta_0 = 0$。每出现40个干涉条纹时记录一次旋转角度，结果填入\cref{table2}。
+\begin{table}[H]
+\centering
+\caption{每出现40个圆环时的旋转角度读数}
+\label{table2}
+\begin{tabular}{|p{20mm}|p{20mm}|p{20mm}|}
+\hline
+$\theta_1$ & $\theta_2$ & $\theta_3$ \\ \hline
+ &  &  \\ \hline
+\end{tabular}
+\end{table}
+测量薄片厚度，结果填入\cref{table3}。
+\begin{table}[H]
+\centering
+\caption{薄片厚度的测量}
+\label{table3}
+\begin{tabular}{|p{20mm}|p{20mm}|p{20mm}|}
+\hline
+$t_1$ & $t_2$ & $t_3$ \\ \hline
+ &  &  \\ \hline
+\end{tabular}
+\end{table}
+利用上面的数据可以算得薄片的折射率。
+\newpage
+\textbf{【实验过程中遇到问题记录】}
+
+%生成最终报告时将上面内容全部删除或注释（用\iffalse \fi），将扫描得到的实验报告保存为Record.pdf在LaTeX model for GPL下，将下行命令的注释号删去。注意根据实际页数调整pages参数。
+%\includepdf[pages=1-3]{Record}
+
+\newpage%分析与讨论
+\cpic{0.255}{e3}%学生信息表格
+\begin{center}
+\LARGE\textbf{{\ExpeName}}
+\end{center}
+\textbf{【分析与讨论】}\par
+(Content)
+\newline
+\textbf{【实验思考题】}\par
+(Content)
+
+\end{document}
