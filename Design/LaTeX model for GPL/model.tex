@@ -106,6 +106,8 @@ A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.wei
  \item[2.] 训练实验设计和操作的能力。
  \item[3.] 验证劈形薄膜等厚干涉的明、暗纹条件。
  \item[4.] 利用劈形薄膜等厚干涉测量物体的厚度。
+ \item[5.] 利用等厚干涉测量微小物体的线度。
+ \item[6.] 利用肌张力传感器测量单摆摆幅。
 \end{enumerate}
 \textbf{【仪器用具】}
 %将讲义中的表格截图保存为t1在该文件夹下后删去下一行之前的%符号，合理调整scale参数。
@@ -120,6 +122,23 @@ A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.wei
 \Delta x = \frac{\lambda}{2 \alpha} \simeq \frac{\lambda L}{2e}
 \eeq
 其中$e$为待测物体厚度，$L$为劈尖总长度。利用读数显微镜测出$\Delta x$的值，就可以得到待测物厚度了。
+\par
+反过来思考，如果用于垫高的物体厚度已知，那么，明纹间的距离也是一个已知量了，因此它可以作为一把尺子测量微小物体（亚毫米尺度）的长度。本实验中，我们利用一根$e = 0.4 \mathrm{\ mm}$的细铁丝形成劈尖，测量一个直径未知的纸上小孔的直径。达到这个目的，只需要数出小孔中条纹的个数$N$，则可以得到其直径为
+\beq
+d = N \Delta x = \frac{\lambda L}{2e} N
+\eeq
+\par
+该实验的另外一部分是利用肌张力传感器测量风力和风速。将一张质量为$m$，面积为$A$的纸片挂在调零且标定好的肌张力传感器上，纸片静止时，肌张力传感器的示数是纸片的重量$mg$，若纸片受到水平方向上的恒定风力$F$，则肌张力传感器的示数将是纸片受到重力和风力的合力
+\beq
+T= \sqrt{(mg)^2 + F^2}
+\eeq
+利用一开始测到的纸片质量就可以得到水平风力$F$
+\beq
+F = \sqrt{T^2 - (mg)^2}
+\eeq
+假设风与纸片相互作用后沿平行纸面的方向扩散，那么，当摆角不大时，一个长度为$v \Delta t$的空气柱具有的动量为$ \Delta p = \rho A v \Delta t \times v = \rho v^2 A \Delta t$。根据动量定理可以算出风力
+\beq F = \frac{\Delta p }{\Delta t} = \rho A v^2\eeq
+从上式也可以反解，根据风力的测量值得到风速的估计。
 
 
 
@@ -134,7 +153,17 @@ A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.wei
 将叠在一起的两块平板玻璃的一端插入一个薄片或细丝，则两块玻璃板间即形成一空气劈尖，当用单色光垂直照射时，在劈尖薄膜上下两表面反射的两束光也将发生干涉，呈现出一组与两玻璃板交接线平行且间隔相等、明暗相间的干涉条纹。
 \begin{enumerate}
 \item[a.] 将被测薄片或细丝夹于两玻璃片之间，用读数显微镜进行观察，描绘劈尖干涉的图像；
-\item[b.] 测量劈尖的两块玻璃板交线到待测薄片间距$L$；
+\item[b.] 测量劈尖的两块玻璃板交线到待测薄片间距$L$，数据记录进\cref{table0}；
+\begin{table}[H]
+\centering
+\caption{劈尖长度$L$的测量}
+\label{table0}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+测量次数 & 1 & 2 & 3  \\ \hline
+劈尖长度$L$ &  &  &   \\ \hline
+\end{tabular}
+\end{table}
 \item[c.] 移动读数显微镜，每隔$5$个暗纹记录读数头移动的距离，数据记录进\cref{table1}，进而验证等厚干涉下干涉条纹均匀分布的理论预言，并算出一个条纹间距$\Delta x$；
 \item[d.] 利用公式$e = \frac{\lambda L}{2 \Delta x}$得到头发丝的厚度；
 \item[e.] 用同样方法测量另外一名同学的头发丝厚度，比比看谁的头发粗，相关数据记录进\cref{table2}。
@@ -152,7 +181,7 @@ A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.wei
 \begin{table}[H]
 \centering
 \caption{另一位同学头发的读数头移动距离与暗纹级数间的关系}
-\label{table1}
+\label{table2}
 \begin{tabular}{|c|p{10mm}|p{10mm}|p{10mm}|p{10mm}|p{10mm}|p{10mm}|p{10mm}|p{10mm}|}
 \hline
 暗纹级数$k$ &  &  &  &  &  &  &  &  \\ \hline
@@ -160,7 +189,96 @@ A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.wei
 \end{tabular}
 \end{table}
 
-
+2. \textbf{利用等厚干涉测量小孔厚度}
+\par
+在一张黑色纸上用绣花针戳一个较小的孔，放在劈尖下玻璃板上。利用一细铁丝垫起劈尖，数出小孔内的条纹数，重复测量，数据记录进\cref{table3}
+\begin{table}[H]
+\centering
+\caption{小孔内的条纹数}
+\label{table3}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+测量次数 & 1 &  2& 3  \\ \hline
+孔内条纹数$N$ &  &  &   \\ \hline
+\end{tabular}
+\end{table}
+\par
+测量此时的劈尖长度，数据记录进\cref{table5}
+\begin{table}[H]
+\centering
+\caption{劈尖长度$L$的测量}
+\label{table5}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+测量次数 & 1 & 2 & 3  \\ \hline
+劈尖长度$L$ &  &  &   \\ \hline
+\end{tabular}
+\end{table}
+利用螺旋测微计测量细铁丝的直径，数据记录进\cref{table4}
+\begin{table}[H]
+\centering
+\caption{细铁丝直径的测量}
+\label{table4}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+测量次数 & 1 & 2 & 3  \\ \hline
+细铁丝直径$e/\mathrm{mm}$ &  &  &   \\ \hline
+\end{tabular}
+\end{table}
+利用上面的数据，最终可以计算出小孔的直径。
+\emptyline
+3. \textbf{利用肌张力传感器测量风力和风速}\par
+用毫米尺测量长方形纸片的长宽如\cref{table6}
+\begin{table}[H]
+\centering
+\caption{长方形纸片的长宽测量}
+\label{table6}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+测量次数 & 1 & 2 & 3  \\ \hline
+长方形长度$a/\mathrm{mm}$ &  &  &   \\ \hline
+长方形宽度$b/\mathrm{mm}$ &  &  &   \\ \hline
+\end{tabular}
+\end{table}
+用标准质量块标定肌张力传感器如\cref{table7}。
+\begin{table}[H]
+\centering
+\caption{肌张力传感器的标定}
+\label{table7}
+\begin{tabular}{|c|p{10mm}|p{10mm}|p{10mm}|p{10mm}|p{10mm}|p{10mm}|p{10mm}|p{10mm}|}
+\hline
+质量块总质量$m/\mathrm{g}$ &  &  &  &  &        \\ \hline
+肌张力传感器示数$V\mathrm{/mV}$ &  &  &  &  &        \\ \hline
+\end{tabular}
+\end{table}
+\par
+挂上纸片，此时肌张力传感器的示数为$V =\uline{\hspace{2cm}} \mathrm{mV}$。
+\par
+让一位同学对着纸片恒定地吹气，另一名同学每隔$2\mathrm{\ s}$记录下肌张力传感器的示数如\cref{table8}。
+\begin{table}[H]
+\centering
+\caption{水平风作用下肌张力传感器的示数}
+\label{table8}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+时间$t \mathrm{/s}$ & 2 & 4& 6 & 8 & 10  \\ \hline
+传感器示数$V'/\mathrm{mV}$ &  &  &  &  & \\ \hline
+\end{tabular}
+\end{table}
+\par
+交换两名同学的角色重复实验，记录如\cref{table9}。
+\begin{table}[H]
+\centering
+\caption{水平风作用下肌张力传感器的示数}
+\label{table9}
+\begin{tabular}{|c|p{12mm}|p{12mm}|p{12mm}|p{12mm}|p{12mm}|}
+\hline
+时间$t \mathrm{/s}$ & 2 & 4& 6 & 8 & 10  \\ \hline
+传感器示数$V'/\mathrm{mV}$ &  &  &  &  & \\ \hline
+\end{tabular}
+\end{table}
+最后比一比谁吹的气速度大，持续时间久。
+\emptyline
 \textbf{【实验过程中遇到问题记录】}
 
 %生成最终报告时将上面内容全部删除或注释（用\iffalse \fi），将扫描得到的实验报告保存为Record.pdf在LaTeX model for GPL下，将下行命令的注释号删去。注意根据实际页数调整pages参数。
