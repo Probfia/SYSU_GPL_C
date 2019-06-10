@@ -1,0 +1,227 @@
+%A LaTeX model for SYSU General Phys. Lab. by Probfia Gao.
+%用XeLaTeX编译
+\documentclass[11pt,a4paper]{ctexart}
+
+%在下面补全实验名，例如 实验BB3 光电效应实验。
+\newcommand{\ExpeName}{实验CB1+ 迈克尔逊干涉及应用（白光干涉）}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[hmargin=1.25in,vmargin=1in]{geometry}
+\usepackage{pdfpages}
+\usepackage[colorlinks,
+            linkcolor=red,
+		 urlcolor=black]{hyperref}
+\usepackage{cleveref}
+\usepackage{float}
+
+\crefname{equation}{}{}
+\crefname{figure}{图}{图}
+\crefname{footnote}{注释}{注释}
+\crefname{table}{表}{表}
+
+%\cpic{<尺寸>}{<文件名>}}用于生成居中的图片。
+\newcommand{\cpic}[2]{
+\begin{center}
+\includegraphics[scale=#1]{#2}
+\end{center}
+}
+
+%\cpicn{<尺寸>}{<文件名>}{<注释>}用于生成居中且带有注释的图片，其label为图片名。
+\newcommand{\cpicn}[3]
+{
+\begin{figure}[H]
+\cpic{#1}{#2}
+\caption{#3\label{#2}}
+\end{figure}
+}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{equation}\begin{aligned}}
+\newcommand{\eea}{\end{aligned}\end{equation}}
+
+%输入单位和数学常数
+%下面所有命令需在公式环境下使用
+\newcommand{\e}{\mathrm{\ e}}   %自然常数e = \e
+\newcommand{\im}{\mathrm{\ i}}   %虚数单位i = \im
+\newcommand{\meter}{\mathrm{\ m}}      %单位/前缀 = \单位/前缀英文名
+\newcommand{\newton}{\mathrm{\ N}}  
+\newcommand{\joule}{\mathrm{\ J}}
+\newcommand{\second}{\mathrm{\ s}}
+\newcommand{\gram}{\mathrm{\ g}}
+\newcommand{\ampere}{\mathrm{\ A}}
+\newcommand{\kilogram}{\mathrm{\ kg}}
+\newcommand{\kelvin}{\mathrm{\ K}}
+\newcommand{\mole}{\mathrm{\ mol}}
+\newcommand{\volt}{\mathrm{\ V}}
+\newcommand{\degreeC}{\ ^\circ \mathrm{C}}  %摄氏度符号 = \degreeC
+
+
+\newcommand{\emptyline}{\par \ \\}
+
+
+\pagestyle{fancy}
+
+\fancyhead[L]{\footnotesize{中山大学物理与天文学院基础物理实验}}
+\fancyhead[R]{\footnotesize{\ExpeName}}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+%第一页
+\cpic{0.255}{e1}%学生信息和计分表格
+\begin{center}
+\LARGE\textbf{{\ExpeName}}
+\end{center}
+\large{【实验报告注意事项】}
+\begin{enumerate}
+ \item 实验报告由三部分组成：
+ \begin{enumerate}
+  \item[1)]预习报告：（提前一周）认真研读\textbf{\uline{实验讲义}}，弄清实验原理；实验所需的仪器设备、用具及其使用（强烈建议到实验室预习），完成讲义中的预习思考题；了解实验需要测量的物理量，并根据要求提前准备实验记录表格（由学生自己在实验前设计好，可以打印）。预习成绩低于10分（共20分）者不能做实验。
+  \item[2)]实验记录：认真、客观记录实验条件、实验过程中的现象以及数据。实验记录请用珠笔或者钢笔书写并签名（{\color{red}用铅笔记录的被认为无效}）。{\color{red}保持原始记录，包括写错删除部分，如因误记需要修改记录，必须按规范修改。}（不得输入电脑打印，但可扫描手记后打印扫描件）；离开前请实验教师检查记录并签名。
+  \item[3)]分析讨论：处理实验原始数据（学习仪器使用类型的实验除外），对数据的可靠性和合理性进行分析；按规范呈现数据和结果（图、表），包括数据、图表按顺序编号及其引用；分析物理现象（含回答实验思考题，写出问题思考过程，必要时按规范引用数据）；最后得出结论。
+ \end{enumerate}
+ \textbf{实验报告}就是预习报告、实验记录、和数据处理与分析合起来，加上本页封面。
+ \item 每次完成实验后的一周内交\textbf{实验报告}。
+ \item 除实验记录外，实验报告其他部分建议双面打印。
+\end{enumerate}
+\ 
+\\
+\ 
+
+\begin{flushright}                                                           %模板作者
+\tiny{
+A \LaTeX \ model for General Phys. Lab., SPA, SYSU by {\em \href{https://www.weibo.com/3532532974/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1}{Probfia} Gao.}\\ Adopted from the \href{http://lovephysics.sysu.edu.cn/lib/exe/fetch.php?media=courses:secondlevelzhuhai:report.docx}{original MS Word model} on \href{http://lovephysics.sysu.edu.cn}{Lovephysics}.\\ You can view it on \href{https://github.com/Probfia/SYSU_GPL_C}{Github}.}
+\end{flushright}
+
+\newpage%预习报告
+\begin{center}
+\LARGE{\textbf{\ExpeName}}
+\end{center}
+\textbf{【实验目的】}
+\begin{enumerate}
+ \item[1.] 观察等倾、等厚干涉现象及调节白光干涉条纹；
+ \item[2.] 学习用迈克尔逊干涉仪测量钠光谱波长差的方法；
+ \item[3.] 学习用白光干涉测量透明薄片折射率的方法；
+ \item[4.] 用迈克尔逊干涉仪测量多种光源的相干长度
+\end{enumerate}
+\textbf{【仪器用具】}
+%将讲义中的表格截图保存为t1在该文件夹下后删去下一行之前的%符号，合理调整scale参数。
+\cpic{0.3}{t1}
+%或者自己去 https://www.tablesgenerator.com/ 做一个表。
+\textbf{【原理概述】}\par
+该实验观察复色光的等倾干涉现象。在迈克尔逊干涉仪中，等倾干涉的光程差为
+\beq
+L = \sqrt{(Z+2d)^2 + R^2} - \sqrt{Z^2 + R^2} = \sqrt{Z^2 + R^2}(\sqrt{1+\frac{4d(Z+d)}{Z^2 + R^2}} - 1) \simeq 2d\cos \theta
+\eeq
+当光程差为波长的整数倍时，出现明纹；半奇数倍时，出现暗纹。明纹条件是
+\beq
+\theta = \arccos \frac{m \lambda}{2d}
+\eeq
+但对于复色光来说，波长非单一，因此，干涉仪会将不同波长的光分开，形成彩色条纹。但彩色条纹中间依然存在一个暗纹，称为中心暗纹。观察到中心暗纹后，移动$M_1$镜使得中心暗纹移到视场中央，在$M_1$镜和分束镜$P_1$间放上折射率为$n$，厚度为$t$的透明薄片，且让薄片和$M_1$镜平行，光程差就相应地扩大了$\Delta L = 2t(n-1)$。这个光程差使得彩色条纹移出视场范围，此时再调整$M_1$镜的位置$\Delta d = \frac{1}{2} \Delta L$，就可以使得彩色条纹重新出现。折射率于是为
+\beq
+n = \frac{\Delta d}{t} + 1
+\eeq
+\par
+该实验的另外一部分是测量钠双线的波长差。钠黄光含有两种波长相近的光（$\lambda_{1}=589.0 \mathrm{\ nm}, \quad \lambda_{2}=589.6 \mathrm{\ nm}$）。采用钠灯作光源时，两
+条谱线形成各自的干涉条纹，在视场中的两套干涉条纹相互叠加。由于波长不同，同级条纹
+之间会产生错位（$\lambda_1$）的某一级的暗条纹可能会和 λ2的另一级的亮条纹重合）。在移动反射镜$M_1$（光程差发生变化）过程中，干涉条纹会出现清晰与模糊的周期性变化，称为“光拍现
+象”。其原理见讲义。\par
+当条纹发生“清晰-模糊-清晰”变化现象时，反射镜移动$\Delta d$的距离，波长差就是
+\beq
+\Delta \lambda = \frac{\bar{\lambda}^2}{2\Delta d}
+\eeq
+\par
+该实验的最后一部分是测量汞灯的相干长度。我们知道，一束光的相干长度是它能够保持相干性的最大长度，于是有
+\beq
+l_c \sim \frac{c}{\Delta f} = \frac{\lambda^2}{\Delta \lambda}
+\eeq
+为了测量相干长度，我们从0开始改变光程差，直到干涉条纹变得十分模糊，便是相干长度的测量值
+\beq
+l_c \sim 2\Delta d
+\eeq
+
+\textbf{【实验前思考题】}
+\begin{enumerate}
+ \item[1.] (问题1)
+ \item[2.] (问题2)
+\end{enumerate}
+
+\newpage%实验记录
+\cpic{0.255}{e2}%学生信息表格
+\begin{center}
+\LARGE{\textbf{\ExpeName}}
+\end{center}
+\textbf{【实验内容、步骤、结果】}
+1.\textbf{测量钠双黄线的波长差}\par
+记录出现“模糊-清晰-模糊”现象的测微头读数如\cref{table2}
+\begin{table}[H]
+    \centering
+    \caption{钠双黄线波长差的测量}
+    \label{table2}
+    \begin{tabular}{|c|p{20mm}|p{20mm}|p{20mm}|}
+    \hline
+    第一次模糊时的测微头位置$d_1/\mathrm{mm}$ &   &    & \\ \hline
+    第二次模糊时的测微头位置$d_2/\mathrm{mm}$ &   &    & \\ \hline
+    \end{tabular}
+\end{table}
+\emptyline
+2.\textbf{透明薄片的折射率}
+\par
+先测量薄片的厚度，数据记录入\cref{table3}
+\begin{table}[H]
+    \centering
+    \caption{薄片厚度的测量}
+    \label{table3}
+    \begin{tabular}{|p{20mm}|p{20mm}|p{20mm}|}
+    \hline
+    $t_1$ & $t_2$ & $t_3$ \\ \hline
+     &  &  \\ \hline
+    \end{tabular}
+\end{table}
+\par
+调节测微头出现全黑条纹，记下此时的读数$d_1$，再加上薄片，调节测微头使得全黑条纹重现，记下此时的读数$d_2$。数据记入\cref{table1}，重复3次。
+\begin{table}[H]
+    \centering
+    \caption{测微头移动距离的测量}
+    \label{table1}
+    \begin{tabular}{|c|p{20mm}|p{20mm}|p{20mm}|}
+    \hline
+    $d_1/\mathrm{mm}$ &   &    & \\ \hline
+    $d_2/\mathrm{mm}$ &   &    & \\ \hline
+    \end{tabular}
+\end{table}
+\emptyline
+3.\textbf{测量汞灯的相干长度}\par
+从0开始改变光程差，直到干涉条纹完全模糊，记录下此时测微头的读数，如\cref{table4}
+\begin{table}[H]
+    \centering
+    \caption{汞灯干涉长度的测量}
+    \label{table4}
+    \begin{tabular}{|p{20mm}|p{20mm}|p{20mm}|}
+    \hline
+    $d_1$ & $d_2$ & $d_3$ \\ \hline
+     &  &  \\ \hline
+    \end{tabular}
+\end{table}
+
+\emptyline
+\textbf{【实验过程中遇到问题记录】}
+
+%生成最终报告时将上面内容全部删除或注释（用\iffalse \fi），将扫描得到的实验报告保存为Record.pdf在LaTeX model for GPL下，将下行命令的注释号删去。注意根据实际页数调整pages参数。
+%\includepdf[pages=1-3]{Record}
+
+\newpage%分析与讨论
+\cpic{0.255}{e3}%学生信息表格
+\begin{center}
+\LARGE\textbf{{\ExpeName}}
+\end{center}
+\textbf{【分析与讨论】}\par
+(Content)
+\newline
+\textbf{【实验思考题】}\par
+(Content)
+
+\end{document}
